@@ -16,6 +16,7 @@
 package org.polyjdbc.core.schema.model;
 
 import org.polyjdbc.core.dialect.Dialect;
+import org.polyjdbc.core.schema.model.DoubleAttribute.DoubleAttributeBuilder;
 import org.polyjdbc.core.schema.model.FloatAttribute.FloatAttributeBuilder;
 import org.polyjdbc.core.schema.model.NumberAttribute.NumberAttributeBuilder;
 
@@ -103,6 +104,10 @@ public final class RelationBuilder {
     
     public FloatAttributeBuilder floatAttr(String name) {
         return FloatAttributeBuilder.floatAttr(dialect, name, this);
+    }
+
+    public DoubleAttributeBuilder doubleAttr(String name) {
+        return DoubleAttributeBuilder.doubleAttr(dialect, name, this);
     }
     
     public NumberAttributeBuilder number(String name) {

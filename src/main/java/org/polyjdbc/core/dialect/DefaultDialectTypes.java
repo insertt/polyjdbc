@@ -62,6 +62,11 @@ public class DefaultDialectTypes implements DialectTypes {
     }
 
     @Override
+    public String doubleType() {
+        return "DOUBLE";
+    }
+
+    @Override
     public String floatType() {
         return "FLOAT";
     }

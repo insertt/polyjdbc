@@ -39,5 +39,7 @@ public interface DialectTypes {
     
     String floatType();
 
+    String doubleType();
+
     String bool();
 }
