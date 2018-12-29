@@ -52,11 +52,14 @@ all engines.
 
 ```groovy
 repositories {
-    mavenCentral()
+    maven {
+        name 'insertt-repo'
+        url 'https://repo.insertt.pl/'
+    }
 }
 
 dependencies {
-    compile group: 'org.polyjdbc', name: 'polyjdbc', version: '0.5.0'
+    compile group: 'org.polyjdbc', name: 'polyjdbc', version: '0.7.6-SNAPSHOT'
 }
 ```
 
