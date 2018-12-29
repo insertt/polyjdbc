@@ -25,7 +25,6 @@ import org.polyjdbc.core.util.TheCloser;
  *
  * <pre>
  * Test test = transactionRunner.run(new TransactionWrapper<Test>() {
- *   @Override
  *   public Test perform(QueryRunner queryRunner) {
  *       SelectQuery query = QueryFactory.select().query("select * from test where name = :name")
  *           .withArgument("name", "test");

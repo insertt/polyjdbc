@@ -85,7 +85,7 @@ public class SelectQuery {
 
     /**
      * Replaces contents of select query with given query string. Query has to
-     * contain all clauses - nothing is generated. Only {@link Select#orderBy(java.lang.String, java.lang.String)} and
+     * contain all clauses - nothing is generated. Only {@link SelectQuery#orderBy(java.lang.String, Order)} and
      * {@link SelectQuery#limit(int, int)} can be used with this method.
      */
     public SelectQuery query(String queryText) {

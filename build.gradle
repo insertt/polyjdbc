@@ -3,6 +3,7 @@ plugins {
     id 'groovy'
     id 'maven'
     id 'pl.allegro.tech.build.axion-release' version '1.9.0'
+    id 'maven-publish'
 }
 
 apply from: 'gradle/mavenCentralPublishing.gradle'
@@ -81,6 +82,32 @@ test {
     testLogging {
 	events 'passed', 'failed', 'skipped'
         exceptionFormat = 'full'
+    }
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            artifact sourceJar {
+                classifier "sources"
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            url deployRepoUrl
+            credentials {
+                username = deployRepoUsername
+                password = deployRepoPassword
+            }
+        }
     }
 }
 

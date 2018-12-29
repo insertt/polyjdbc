@@ -44,6 +44,8 @@ public abstract class InsertQuery {
 
     private final StringBuilder values = new StringBuilder(VALUES_LENGTH);
 
+    private final StringBuilder duplicateKeyQuery = new StringBuilder();
+
     InsertQuery(ColumnTypeMapper typeMapper) {
         this.query = new Query(typeMapper);
     }
@@ -54,6 +56,9 @@ public abstract class InsertQuery {
 
         query.append("(").append(valueNames.toString()).append(")")
                 .append(" VALUES(").append(values.toString()).append(")");
+
+        query.append(duplicateKeyQuery.toString());
+
         query.compile();
 
         return query;
@@ -87,6 +92,31 @@ public abstract class InsertQuery {
         valueNames.append(fieldName).append(", ");
         values.append(":").append(fieldName).append(", ");
         setArgument(fieldName, value);
+        return this;
+    }
+
+    public InsertQuery onDuplicateKey() {
+        this.duplicateKeyQuery.append(" ON DUPLICATE KEY ");
+
+        return this;
+    }
+
+    public InsertQuery update() {
+        this.duplicateKeyQuery.append("UPDATE ");
+
+        return this;
+    }
+
+    public InsertQuery ignore() {
+        this.duplicateKeyQuery.append("IGNORE");
+
+        return this;
+    }
+
+    public InsertQuery valueDuplicate(String fieldName, Object value) {
+        this.duplicateKeyQuery.append(fieldName).append("=").append(value);
+        this.duplicateKeyQuery.append(", ");
+
         return this;
     }
 

@@ -19,7 +19,7 @@ import org.polyjdbc.core.type.ColumnTypeMapper;
 import org.polyjdbc.core.util.StringBuilderUtil;
 
 /**
- * Builds update query, use {@link QueryFactory#update() } to create new instance.
+ * Builds update query, use {@link QueryFactory#update(java.lang.String table) } to create new instance.
  *
  * <pre>
  * QueryFactory.update("test")
